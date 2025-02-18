@@ -1,0 +1,134 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    overflow: hidden;
+}
+
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #a8d0e6;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 50% 75%, 18% 100%, 0% 38%);
+    animation: float 5s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.main-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+}
+
+.heart-animation {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #ff6f61 0%, #6b5b95 100%);
+    position: relative;
+    animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Formato do coração usando pseudo-elementos */
+.heart-animation::before,
+.heart-animation::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 160px;
+    background: inherit;
+    border-radius: 100px 100px 0 0;
+}
+
+.heart-animation::before {
+    left: 100px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-animation::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.heart-animation span {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .heart-animation {
+        width: 150px;
+        height: 150px;
+    }
+
+    .heart-animation::before,
+    .heart-animation::after {
+        width: 75px;
+        height: 120px;
+    }
+
+    .heart-animation::before {
+        left: 75px;
+    }
+}
